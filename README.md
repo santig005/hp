@@ -1,6 +1,4 @@
-# 🚀 Pokedex Dashboard - Prueba Técnica HP 2025
-
-Dashboard interactivo para analizar datos de Pokémon usando Django y PokeAPI. Desarrollado como solución a la prueba técnica de HP para pasantías 2025.
+Dashboard interactivo para analizar datos de Pokémon usando Django y PokeAPI.
 
 ## ✨ Características
 
@@ -27,9 +25,13 @@ cd pokedex
 ```bash
 pip install django requests
 
-3. Ejecutar servidor Django:
+## 🚀 Ejecución
+
+
+1. Ejecutar servidor Django:
 ```bash
 python manage.py runserver
 
-4. Abrir el navegadore:
+
+2. Abrir el navegadore:
 http://localhost:8000
