@@ -9,12 +9,6 @@ Dashboard interactivo para analizar datos de Pokémon usando Django y PokeAPI. D
   - Tipo Grass 🌿
   - Tipo Flying 🕊️ + Altura >10 dm
   - Nombres invertidos (ej: "bulbasaur" → "ruasablub")
-- **Diseño Moderno**: 
-  - Interfaz responsive con Bootstrap 5
-  - Efectos hover y badges para tipos
-  - Navbar profesional y footer
-- **Datos en Tiempo Real**: 
-  - Consume directamente de [PokeAPI](https://pokeapi.co/)
 
 ## ⚙️ Requisitos
 
