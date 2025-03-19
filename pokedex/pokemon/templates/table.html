@@ -1,0 +1,22 @@
+<table class="table table-striped">
+  <thead>
+      <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Tipo(s)</th>
+          <th>Altura</th>
+          <th>Peso</th>
+      </tr>
+  </thead>
+  <tbody>
+      {% for p in pokemon_list %}
+      <tr>
+          <td>{{ p.id }}</td>
+          <td>{{ p.name }}</td>
+          <td>{{ p.types|join:", " }}</td>
+          <td>{{ p.height }}</td>
+          <td>{{ p.weight }}</td>
+      </tr>
+      {% endfor %}
+  </tbody>
+</table>

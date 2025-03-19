@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pokedex Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(120deg, #f5f6fa 0%, #dcdde1 100%);
+            min-height: 100vh;
+        }
+        .container {
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+        h1 {
+            color: #2c3e50;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 3px solid #e74c3c;
+            padding-bottom: 0.5rem;
+        }
+        h3 {
+            color: #34495e;
+            margin-top: 2rem !important;
+            padding: 0.5rem;
+            background: #f8f9fa;
+            border-left: 4px solid #3498db;
+        }
+        .table {
+            margin-top: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .table thead {
+            background: #3498db;
+            color: white;
+        }
+        .table th {
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .table-hover tbody tr:hover {
+            background-color: rgba(52, 152, 219, 0.1);
+        }
+        .badge-type {
+            background: #3498db;
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin: 2px;
+        }
+        .reversed-name {
+            font-family: 'Courier New', monospace;
+            color: #e74c3c;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/International_Pok%C3%A9mon_logo.svg" 
+                     alt="Pokémon Logo" 
+                     height="30"
+                     class="d-inline-block align-text-top">
+                Professor Oak's Laboratory
+            </a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 class="text-center mb-4">PokeAnalytics</h1>
+
+        <!-- Tabla 1: Peso entre 30 y 80 -->
+        <h3>⚖️ Todos los 50 pokemones</h3>
+        {% include "table.html" with pokemon_list=all_pokemon %}
+        
+        <!-- Tabla 1: Peso entre 30 y 80 -->
+        <h3>⚖️ Pokemones en el rango de peso (30-80)</h3>
+        {% include "table.html" with pokemon_list=filtered_weight %}
+
+        <!-- Tabla 2: Tipo Grass -->
+        <h3>🌿 Pokemones tipo Grass</h3>
+        {% include "table.html" with pokemon_list=grass_type %}
+
+        <!-- Tabla 3: Tipo Flying y altura >10 -->
+        <h3>🕊️ Pokemones tipo Flying y que miden más de 10</h3>
+        {% include "table.html" with pokemon_list=flying_type %}
+
+        <!-- Tabla 4: Nombres invertidos -->
+        <h3>🔠 Pokemones con los nombres reversados</h3>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre original</th>
+                    <th>Nombre rerversado</th>
+                    <th>Tipos</th>
+                    <th>Altura</th>
+                    <th>Peso</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for p in all_pokemon %}
+                <tr>
+                    <td class="fw-bold">{{ p.id }}</td>
+                    <td class="text-capitalize">{{ p.name }}</td>
+                    <td class="reversed-name">{{ p.reversed_name }}</td>
+                    <td>
+                        {% for type in p.types %}
+                        <span class="badge-type">{{ type|title }}</span>
+                        {% endfor %}
+                    </td>
+                    <td>{{ p.height }} </td>
+                    <td>{{ p.weight }} </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-3 mt-4">
+        <div class="container">
+            <p class="mb-0">© 2023 Professor Oak's Laboratory. All Pokémon data from PokeAPI</p>
+        </div>
+    </footer>
+</body>
+</html>
